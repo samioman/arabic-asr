@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ar">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arabic Audio Realtime Transcription</title>
+  <link rel="stylesheet" href="../static/style/styles.css">
+
+  <style>
+ 
+  </style>
+
+</head>
+
+<body>
+  <div dir="rtl" class="title-div">
+    <!-- <img src="../static/imgs/rao.png" alt="Logo"> -->
+    <p class="title">نظام تحويل الملفات الصوتية الى نصوص مكتوبة</p>
+    <!-- <p class="title-dec">
+      تم تطوير هذا المشروع للمشاركة به في مسابقة النادي العلمي بالجيش السلطاني العماني لأفضل ابتكار بين الأجهزة العسكرية والأمنية لعام ٢٠٢٤م
+    </p> -->
+  </div>
+
+  
+  <div class="container">
+    <div class="audio-recorder">
+      <button id="recordButton" onclick="toggleRecording()">
+        <img id="play-pause" src="../static/imgs/play.png">
+      </button>
+      <div class="waveform" id="waveform">
+        <canvas id="canvas"></canvas>
+      </div>
+      <span class="timer" id="timer">00:00</span>
+    </div>
+    <div class="lds-dual-ring-container">
+      <div class="lds-dual-ring" id="spinner"></div>
+    </div>
+  </div>
+
+  <!-- <div dir="rtl" class="translation" id="translation"></div> -->
+
+  <textarea dir="rtl" class="translation" id="translation"></textarea>
+
+  <!-- <div>
+    <label for="send-mode">Select Send Mode:</label>
+    <select id="send-mode">
+      <option value="onStop">Send on Stop</option>
+      <option value="interval">Send at Fixed Intervals</option>
+    </select>
+  </div> -->
+
+  <div class="copyright">
+    <p>
+      قام بتطوير النظام سامي بن عبدالله بن محمد الشبيبي في أواخر عام ٢٠٢٤م.
+      <br>
+      جميع الحقوق محفوظة 
+      <span>&#169</span>
+      ٢٠٢٤
+
+    </p>
+  </div>
+
+  <script src="../static/js/app_modiified.js"></script>
+</body>
+
+</html>
