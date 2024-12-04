@@ -64,10 +64,12 @@ function init() {
 
 
     // Event Listener for Switching Modes
-    modeSelector.addEventListener("change", (event) => {
-        sendMode = event.target.value; // Update sendMode based on user selection
-        console.log(`Send mode switched to: ${sendMode}`);
-    });
+    if (modeSelector) {
+        modeSelector.addEventListener("change", (event) => {
+            sendMode = event.target.value; // Update sendMode based on user selection
+            console.log(`Send mode switched to: ${sendMode}`);
+        });
+    }
 
 }
 
@@ -153,7 +155,7 @@ function sendAudioToFlask() {
 
     console.log("Sending audio to Flask server...");
     spinner.style.visibility = "visible";
-    fetch("http://127.0.0.1:5000/transcribe", {
+    fetch("https://arabic-asr.onrender.com/transcribe", {
         method: "POST",
         body: formData,
     })
