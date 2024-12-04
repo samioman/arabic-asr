@@ -1,11 +1,14 @@
 from flask import Flask, render_template, request, jsonify
 from transformers import pipeline
+from huggingface_hub import login
 import os
 import warnings
 
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
 
+# Authenticate with your token
+login(token="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")
 
 app = Flask(__name__)
 UPLOAD_FOLDER = 'uploads'
@@ -16,11 +19,11 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 # model_turbo = "../traind_models/whisper-large-v3-turbo-ar"
 model_medium = "Samioman/whisper-medium-ar"
 
-
+device = int(os.environ.get("DEVICE", -1))
 pipe = pipeline(
     "automatic-speech-recognition", 
     model= model_medium,
-    device= 1  # Use 0 for GPU and 1 for CPU
+    device= device  # Use 0 for GPU and 1 for CPU
 )
 
 def transcribe_speech(filepath):
@@ -71,4 +74,5 @@ def home():
 
 
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host="0.0.0.0", port=port)
